@@ -2,7 +2,7 @@
 shell_dir=$(cd "$(dirname $0)"; pwd)
 source ${shell_dir}/source_debug.config
 
-project_dir="$shell_dir/../"
+project_dir="$shell_dir/../../"
 PROJECT_NAME="DependProject.xcodeproj"
 APP_DIR="$project_dir/AppSourceDebugHookProject/DependProject"
 CI_DIR="$shell_dir"
