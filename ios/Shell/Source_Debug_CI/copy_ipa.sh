@@ -1,11 +1,11 @@
 #!/bin/bash
 echo "**************** begin copy_ipa ******************"
 # ${SRCROOT} 它是工程文件所在的目录
-CI_PATH="${SRCROOT}/../Source_Debug_CI"
+CI_PATH="${SRCROOT}/../Shell/Source_Debug_CI"
 LOCAL_SDK_PATH="${SRCROOT}/SDK"
-TEMP_PATH="${SRCROOT}/../Source_Debug_CI/Temp"
+TEMP_PATH="${SRCROOT}/../Shell/Source_Debug_CI/Temp"
 #资源文件夹
-ASSETS_PATH="${SRCROOT}/../Source_Debug_CI/APP"
+ASSETS_PATH="${SRCROOT}/../APP"
 #ipa包路径
 TARGET_IPA_PATH="${ASSETS_PATH}/*.ipa"
 

@@ -463,7 +463,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# copy ipa\nSHELL_DIR=${PROJECT_DIR}/../Source_Debug_CI/\ncd ${SHELL_DIR}\n./copy_ipa.sh\nexit 0\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# copy ipa\nSHELL_DIR=${PROJECT_DIR}/../Shell/Source_Debug_CI/\ncd ${SHELL_DIR}\n./copy_ipa.sh\nexit 0\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
