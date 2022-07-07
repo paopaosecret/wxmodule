@@ -108,7 +108,7 @@
 		C112E31227D20DF000E9CC50 /* NSObject+V2TXLivePlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+V2TXLivePlayer.m"; sourceTree = "<group>"; };
 		C112E33527D2259200E9CC50 /* NSObject+WXTRTCCloud.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+WXTRTCCloud.h"; sourceTree = "<group>"; };
 		C112E33627D2259200E9CC50 /* NSObject+WXTRTCCloud.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+WXTRTCCloud.m"; sourceTree = "<group>"; };
-		C191EEB527E45B3900699DAB /* copy_ipa.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = copy_ipa.sh; path = ../CI/copy_ipa.sh; sourceTree = "<group>"; };
+		C15141832876E1DE00B3A632 /* copy_ipa.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = copy_ipa.sh; path = ../Shell/CI/copy_ipa.sh; sourceTree = "<group>"; };
 		C1AAE47227EC0D7C0015AA35 /* NSObject+TXLiveBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TXLiveBase.h"; sourceTree = "<group>"; };
 		C1AAE47327EC0D7C0015AA35 /* NSObject+TXLiveBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TXLiveBase.m"; sourceTree = "<group>"; };
 		C1AAE47427EC0D7C0015AA35 /* NSObject+Xmagic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Xmagic.h"; sourceTree = "<group>"; };
@@ -172,7 +172,7 @@
 		C112E2C127D1EE5700E9CC50 = {
 			isa = PBXGroup;
 			children = (
-				C191EEB527E45B3900699DAB /* copy_ipa.sh */,
+				C15141832876E1DE00B3A632 /* copy_ipa.sh */,
 				C112E2CC27D1EE5700E9CC50 /* AppHookProject */,
 				C112E2ED27D1EF2100E9CC50 /* InjectionFramework */,
 				C112E2CB27D1EE5700E9CC50 /* Products */,
@@ -394,7 +394,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nSHELL_DIR=${PROJECT_DIR}/../CI/\ncd ${SHELL_DIR}\nchmod u+x *.sh\n./copy_ipa.sh\nexit 0\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nSHELL_DIR=${PROJECT_DIR}/../Shell/CI/\ncd ${SHELL_DIR}\nchmod u+x *.sh\n./copy_ipa.sh\nexit 0\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
