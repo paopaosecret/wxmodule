@@ -12,6 +12,7 @@
 
 + (void)injectionTXLivePlayer {
     Class TXLivePlayerClass = NSClassFromString(@"TXLivePlayer");
+    [TXLivePlayerClass injectionExchangeInstanceMethod:@selector(init) withMethod:@selector(injection_TXLivePlayer_init)];
     [TXLivePlayerClass injectionExchangeInstanceMethod:@selector(startPlay:type:)
                                             withMethod:@selector(injection_v1_startPlay:appScene:)];
     [TXLivePlayerClass injectionExchangeInstanceMethod:@selector(prepareLiveSeek:bizId:)
@@ -26,9 +27,15 @@
                                             withMethod:@selector(injection_v1_pause)];
     [TXLivePlayerClass injectionExchangeInstanceMethod:@selector(resume)
                                             withMethod:@selector(injection_v1_resume)];
-    [TXLivePlayerClass injectionExchangeInstanceMethod:@selector(setConfig)
-                                            withMethod:@selector(injection_v1_setConfig)];
+    [TXLivePlayerClass injectionExchangeInstanceMethod:@selector(setConfig:)
+                                            withMethod:@selector(injection_v1_setConfig:)];
 }
+
+- (id)injection_TXLivePlayer_init {
+    id obj = [self injection_TXLivePlayer_init];
+    return obj;
+}
+
 
 - (int)injection_v1_startPlay:(NSString *)url type:(NSInteger)playType {
     NSLog(@"injection_v1_startPlay:%@",url);
