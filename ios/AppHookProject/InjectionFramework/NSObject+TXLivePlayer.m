@@ -14,7 +14,7 @@
     Class TXLivePlayerClass = NSClassFromString(@"TXLivePlayer");
     [TXLivePlayerClass injectionExchangeInstanceMethod:@selector(init) withMethod:@selector(injection_TXLivePlayer_init)];
     [TXLivePlayerClass injectionExchangeInstanceMethod:@selector(startPlay:type:)
-                                            withMethod:@selector(injection_v1_startPlay:appScene:)];
+                                            withMethod:@selector(injection_v1_startPlay:type:)];
     [TXLivePlayerClass injectionExchangeInstanceMethod:@selector(prepareLiveSeek:bizId:)
                                             withMethod:@selector(injection_v1_prepareLiveSeek:bizId:)];
     [TXLivePlayerClass injectionExchangeInstanceMethod:@selector(switchStream:)
@@ -33,6 +33,7 @@
 
 - (id)injection_TXLivePlayer_init {
     id obj = [self injection_TXLivePlayer_init];
+    [obj showAllClassFunction];
     return obj;
 }
 
