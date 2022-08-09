@@ -11,8 +11,6 @@ NINJA_TARGET=${build_target}
 SOURCES_DEBUG=${source_debug}
 
 NINJA_BUILD_DIR=${sdk_project_path}/out/ipa_debug
-target_framework=TXLiteAVSDK_Professional
-
 framework_type="smart_no_vod"
 if [ "$target_framework" = "TXLiteAVSDK_Professional" ];then
     framework_type="professional"
