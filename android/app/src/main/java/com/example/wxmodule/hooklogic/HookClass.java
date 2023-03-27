@@ -23,29 +23,38 @@ public class HookClass implements IXposedHookLoadPackage {
         String pkgName = lpparam.packageName;
         // hook 微信
         if (pkgName.contains("com.tencent.mm") || pkgName.equals("com.tencent.liteav.demo") || pkgName.equals("com.tencent.mobileqq")) {
-            Log.i(TAG, "HookLogic-->" + "handleLoadPackage: hook wx app.");
-            hookJSAdapter(lpparam);
+            Log.i(TAG, "HookLogic-->" + "handleLoadPackage: hook liteav app.");
+//            hookJSAdapter(lpparam);
+            hookLive(lpparam);
+            hookTRTC(lpparam);
         }
     }
 
     private void hookJSAdapter(XC_LoadPackage.LoadPackageParam lpparam) {
         hookClassSpecificMethod("com.tencent.live2.jsplugin.pusher.V2TXLivePusherJSAdapter", "V2TXLivePusherJSAdapter", lpparam, mHookPusherJSAdapterMethodList);
         hookClassSpecificMethod("com.tencent.live2.jsplugin.player.V2TXLivePlayerJSAdapter", "V2TXLivePlayerJSAdapter", lpparam, mHookPlayerJSAdapterMethodList);
-        hookClassAllMethod(" com.tencent.live2.V2TXLivePusher", "V2TXLivePusher", lpparam);
-        hookClassAllMethod(" com.tencent.live2.V2TXLivePlayer", "V2TXLivePlayer", lpparam);
+    }
+
+    private void hookLive(XC_LoadPackage.LoadPackageParam lpparam) {
+        hookClassAllMethod("com.tencent.live2.impl.V2TXLivePlayerImpl", "V2TXLivePlayerImpl", lpparam);
+        hookClassAllMethod("com.tencent.live2.impl.V2TXLivePusherImpl", "V2TXLivePusherImpl", lpparam);
+    }
+
+    private void hookTRTC(XC_LoadPackage.LoadPackageParam lpparam) {
+        hookClassAllMethod("com.tencent.liteav.trtc.TRTCCloudImpl", "TRTCCloudImpl", lpparam);
     }
 
     private void hookClassAllMethod(String className, String classTag, XC_LoadPackage.LoadPackageParam lpparam) {
         try {
             //TODO 1、根据全先限定类名获取类的Class对象
-            Class clazz = XposedHelpers.findClass(className, lpparam.classLoader);
-//            Log.i(TAG, "hookClassAllMethod: find class success. clazz:" + clazz);
+            Class clazz = XposedHelpers.findClassIfExists(className, lpparam.classLoader);
+            Log.i(TAG, "hookClassAllMethod: find class success. clazz:" + clazz);
             //TODO 2、获取Class声明的任何权限的方法，包括私有方法
             Method[] methods = clazz.getDeclaredMethods();
-//            Log.i(TAG, "hookClassAllMethod: find methods: " + Arrays.toString(methods));
+            Log.i(TAG, "hookClassAllMethod: find methods: " + Arrays.toString(methods));
             //TODO 3、遍历方法并hook
             for (final Method method : methods) {
-//                Log.i(TAG, "hookClassAllMethod: find method params.  method:" + method.toString() + " paramsType:" + Arrays.toString(method.getParameterTypes()));
+                Log.i(TAG, "hookClassAllMethod: find method params.  method:" + method.toString() + " paramsType:" + Arrays.toString(method.getParameterTypes()));
                 //TODO 4、构建单个方法需要的参数
                 int paramSize = method.getParameterTypes().length;
                 Object[] params = new Object[paramSize + 1];
@@ -91,7 +100,7 @@ public class HookClass implements IXposedHookLoadPackage {
                                          List<String> methodList) {
         try {
             //TODO 1、根据全先限定类名获取类的Class对象
-            Class clazz = XposedHelpers.findClass(className, lpparam.classLoader);
+            Class clazz = XposedHelpers.findClassIfExists(className, lpparam.classLoader);
 //            Log.i(TAG, "hookClassAllMethod: find class success. clazz:" + clazz);
             //TODO 2、获取Class声明的任何权限的方法，包括私有方法
             Method[] methods = clazz.getDeclaredMethods();
